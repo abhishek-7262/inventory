@@ -13,7 +13,7 @@ import { UpdateSaleDto } from './dto/update-sale.dto';
 import { AddSaleItemDto } from './dto/add-sale-item.dto';
 import { UpdateSaleItemDto } from './dto/update-sale-item.dto';
 
-@Controller('sale')
+@Controller('admin/sale')
 export class SaleController {
   constructor(private readonly saleService: SaleService) {}
 
