@@ -1,12 +1,15 @@
-import { IsDateString, IsString } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateSaleDto {
   @IsString()
+  @IsNotEmpty()
   title: string;
 
   @IsDateString()
-  startTime: Date;
+  @IsNotEmpty()
+  startTime: string;
 
   @IsDateString()
-  endTime: Date;
+  @IsNotEmpty()
+  endTime: string;
 }
