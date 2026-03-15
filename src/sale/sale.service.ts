@@ -44,12 +44,14 @@ export class SaleService {
   }
 
   async addItemToSale(saleId: string, dto: AddSaleItemDto) {
+    // 1️⃣ Check if sale exists
     const saleExists = await this.saleModel.findById(saleId);
     if (!saleExists) throw new NotFoundException('Sale not found');
 
+    // 2️⃣ Create sale item using schema-aligned fields
     return this.saleItemModel.create({
-      flashSale: saleId,
-      product: dto.productId,
+      flashSale: saleId, // from URL
+      product: dto.product, // from DTO
       salePrice: dto.salePrice,
       saleQuantity: dto.saleQuantity,
     });

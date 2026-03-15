@@ -3,11 +3,11 @@ import { IsMongoId, IsNotEmpty, IsNumber, Min } from 'class-validator';
 export class AddSaleItemDto {
   @IsMongoId()
   @IsNotEmpty()
-  productId: string;
+  flashSale: string; // corresponds to schema.flashSale
 
   @IsMongoId()
   @IsNotEmpty()
-  saleId: string;
+  product: string; // corresponds to schema.product
 
   @IsNumber()
   @Min(0)
