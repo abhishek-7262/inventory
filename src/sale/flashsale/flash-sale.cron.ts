@@ -29,7 +29,7 @@ export class FlashSaleCron {
 
       for (const sale of activeSales) {
         // Optional: check if already added to Redis to avoid duplication
-        await this.flashSaleService.addProductsToRedis(sale._id);
+        await this.flashSaleService.addProductsToRedis(sale._id.toString());
         this.logger.log(`Flash sale added to Redis: ${sale.title}`);
       }
     } catch (err) {
