@@ -4,15 +4,19 @@ import { Products, ProductsDocument } from './schemas/product.schema';
 import { Model } from 'mongoose';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { RedisService } from 'src/common/redis/redis.service';
 
 @Injectable()
 export class ProductsService {
   constructor(
+    private readonly redis: RedisService,
     @InjectModel(Products.name)
-    private productsModel: Model<ProductsDocument>,
+    private readonly productsModel: Model<ProductsDocument>,
   ) {}
 
   async create(createProductDto: CreateProductDto) {
+    await this.redis.set('mykey', 'hello from nestjs');
+
     return this.productsModel.create(createProductDto);
   }
 

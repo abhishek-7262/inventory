@@ -3,4 +3,6 @@ export class UpdateProductDto {
   price?: number;
   description?: string;
   quantity?: number;
+  category: string;
+  isActive?: boolean;
 }
