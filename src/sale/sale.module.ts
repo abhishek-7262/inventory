@@ -5,6 +5,9 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { Sale, SaleSchema } from './schema/sale.schema';
 import { SaleItem, SaleItemSchema } from './schema/sale-item.schema';
 
+import { FlashSaleService } from './flashsale/flash-sale.service';
+import { FlashSaleCron } from './flashsale/flash-sale.cron';
+
 @Module({
   imports: [
     MongooseModule.forFeature([
@@ -13,6 +16,7 @@ import { SaleItem, SaleItemSchema } from './schema/sale-item.schema';
     ]),
   ],
   controllers: [SaleController],
-  providers: [SaleService],
+  providers: [SaleService, FlashSaleService, FlashSaleCron],
+  exports: [FlashSaleService],
 })
 export class SaleModule {}
