@@ -5,6 +5,7 @@ import { ProductsModule } from './products/products.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SaleModule } from './sale/sale.module';
+import { RedisModule } from './common/redis/redis.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { SaleModule } from './sale/sale.module';
     ProductsModule,
 
     SaleModule,
+    RedisModule,
   ],
   controllers: [AppController],
   providers: [AppService],
